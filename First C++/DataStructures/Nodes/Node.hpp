@@ -33,8 +33,8 @@ public:
     
 };
 
-tempalte <class Type>
-BinaryTreeNode<Type> :: BinaryTreeNode() : Node<Type>()
+template <class Type>
+BinaryTreeNode<Type> :: BinaryTreeNode() : Node <Type> ()
 {
     root = nullptr;
     left = nullptr;

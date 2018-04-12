@@ -9,7 +9,7 @@
 #ifndef Tree_hpp
 #define Tree_hpp
 
-#include "../../Nodes/BinaryTreeNode.hpp"
+#include "/Users/irow0433/Documents/Swift/DataStrucures/First C++/DataStructures/Nodes/BinaryTreeNode.hpp"
 #include <stdio.h>
 template <class Type>
 class Tree{
@@ -29,6 +29,6 @@ public:
     virtual void inOrderTraversal() = 0;
     virtual void preOrderTraversal() = 0;
     virtual void postOrderTraversal() = 0;
-}
+};
 
 #endif /* Tree_hpp */

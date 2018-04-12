@@ -329,7 +329,21 @@ void BinarySearchTree<Type> :: remove(Type getRidOfMe){
                     current = current->getRightNode();
         }
     }
+            
+            if(current == nullptr){
+                cerr << "item not found, removal unsuccessful" << endl;
+            }
+            else if(hasBeenFound){
+                if(current == this->root){
+                    removeNode(this->root);
+                }
+                else{
+                    removeNode(prervious->getRightNode())
+                }
+            }
 }
+        
+
         
 
         

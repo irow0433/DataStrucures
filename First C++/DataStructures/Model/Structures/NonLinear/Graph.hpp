@@ -45,7 +45,7 @@ public:
     //check connections
     bool hadUndirectedConnection(int source, int target) const;
     bool areConnected(int source, int target)const;
-    std::set<int> neighbors(int vertex) const;
+    std :: set <int> neighbors(int vertex) const;
     
     //Traversals
     void depthFirstTraversal(Graph<Type> & graph, int vertex);
@@ -76,7 +76,7 @@ Type& Graph<Type> :: operator[](int vertex){
 }
 
 template <class Type>
-Type& Graph<Type> :: operator[](int vertex) const
+Type & Graph<Type> :: operator[](int vertex) const
 {
     assert(vertex < vertexCount);
     return graphData[vertex];
@@ -84,16 +84,16 @@ Type& Graph<Type> :: operator[](int vertex) const
 
 template <class Type>
 void Graph<Type> :: addVertex(const Type& value){
-    assert(vertexCount < MAXIMUM)
-    INT newVertexNumbver = vertexCount;
+    assert(vertexCount < MAXIMUM);
+    int newVertexNumbver = vertexCount;
     vertexCount++;
     
     for(int otherVertexNumber = 0; otherVertexNumber < vertexCount; otherVertexNumber++)
     {
-        adjacencyMatrix[otherVertexNumber][newVertexNumber] = false;
-        adjacencyMatrix[newVertexNumber][otherVertexNumber] = false;
+        adjacencyMatrix[otherVertexNumber][otherVertexNumber] = false;
+        adjacencyMatrix[otherVertexNumber][otherVertexNumber] = false;
     }
-    graphData[newVertexNumber] = value;
+    graphData[otherVertexNumber] = value;
 }
 
 template <class Type>
