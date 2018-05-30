@@ -10,8 +10,7 @@
 
 CrimeData :: CrimeData()
 {
-    //Included for compilation of data structures
-    //We need a no parameter constructor
+    
 }
 
 CrimeData :: CrimeData(string currentCSVLine)

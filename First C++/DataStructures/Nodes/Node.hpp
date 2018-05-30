@@ -6,83 +6,38 @@
 //  Copyright © 2018 Rowlette, Isaac. All rights reserved.
 //
 
-#ifndef Node_hpp
-#define Node_hpp
+#include "ArrayTester.hpp"
 
-#include <stdio.h>
+using namespace std;
 
-template <class Type>
-class BinaryTreeNode : public Node<Type>
+void ArrayTester :: testArray()
 {
-private:
-    BinaryTreeNode<Type> * root;
-    BinaryTreeNode<Type> * left;
-    BinaryTreeNode<Type> * right;
+    Array<int> firstArray(10);
     
-public:
-    BinaryTreeNode();
-    BinaryTreeNode(Type data);
+    for (int i = 0; i < 10; i++)
+    {
+        firstArray.setAtIndex(i, i);
+    }
     
-    void setRootNode(BinaryTreeNode<Type> * root);
-    void setRightNode(BinaryTreeNode<Type> * right);
-    void setLeftNode(BinaryTreeNode<Type> * left);
+    for (int i = 0; i < firstArray.getSize(); i++)
+    {
+        cout << firstArray[i] << endl;
+    }
     
-    BinaryTreeNode<Type> * getRootNode();
-    BinaryTreeNode<Type> * getLeftNode();
-    BinaryTreeNode<Type> * getRightNode();
+    Array<int> secondArray(400);
+    Array<int> thirdArray(secondArray);
     
-};
-
-template <class Type>
-BinaryTreeNode<Type> :: BinaryTreeNode() : Node <Type> ()
+    cout << firstArray.getSize() << endl;
+    cout << secondArray.getSize() << endl;
+    cout << thirdArray.getSize() << endl;
+    
+    thirdArray[5] = 123;
+    cout << thirdArray[5] << endl;
+    
+    
+}
+void ArrayTester :: testAdvancedArray()
 {
-    root = nullptr;
-    left = nullptr;
-    right = nullptr;
+    
 }
 
-template <class Type>
-BinaryTreeNode<Type> :: BinaryTreeNode(Type data) : Node<Type>(data)
-{
-    root = nullptr;
-    left = nullptr;
-    right = nullptr;
-}
-
-template <class Type>
-BinaryTreeNode<Type> * BinaryTreeNode<Type< :: getRootNode()
-{
-    return this->root;
-}
-
-template <class Type>
-BinaryTreeNode<Type> * BinaryTreeNode<Type> :: getRighhtNode()
-{
-    return this->right;
-}
-
-template <class Type>
-BinaryTreeNode<Type> * BinaryTreeNode<Type> :: getLeftNode()
-{
-    return this->left;
-}
-
-template <class Type>
-void BinaryTreeNode<Type> :: setRootNode(BinaryTreeNode<Type> * newRoot)
-{
-    root = newRoot;
-}
-
-template <class Type>
-void BinaryTreeNode<Type> :: setRightNode(BinaryTreeeNode<Type> * right)
-{
-    this->right = right;
-}
-
-template <class Type>
-void BinaryTreeNode<Type> :: setLeftNode(BinaryTreeNode<Type> * left)
-{
-    this->left = left;
-}
-
-#endif /* Node_hpp */

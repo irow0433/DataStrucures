@@ -9,26 +9,33 @@
 #ifndef Tree_hpp
 #define Tree_hpp
 
-#include "/Users/irow0433/Documents/Swift/DataStrucures/First C++/DataStructures/Nodes/BinaryTreeNode.hpp"
-#include <stdio.h>
+#include "../../Nodes/BinaryTreeNode.hpp"
 template <class Type>
-class Tree{
+class Tree
+{
 protected:
     BinaryTreeNode<Type> * root;
 public:
-    //info methods
+    //Information Methods
     virtual int getSize() = 0;
     virtual int getHeight() = 0;
     virtual bool isComplete() = 0;
     virtual bool isBalanced() = 0;
-    //data methods
+    
+    //*Data methods*
     virtual void insert(Type data) = 0;
     virtual bool contains(Type data) = 0;
     virtual void remove(Type data) = 0;
-    //traversals
+    
+    //*Traversals*
     virtual void inOrderTraversal() = 0;
     virtual void preOrderTraversal() = 0;
     virtual void postOrderTraversal() = 0;
+    
 };
+
+
+
+
 
 #endif /* Tree_hpp */

@@ -9,14 +9,16 @@
 #ifndef BinaryTreeTester_hpp
 #define BinaryTreeTester_hpp
 
-#include "/Users/irow0433/Documents/Swift/DataStrucures/First C++/DataStructures/DataStructures/Testers/BinaryTreeTester.hpp"
-#include "/Users/irow0433/Documents/Swift/DataStrucures/First C++/DataStructures/Model/Structures/NonLinear/BinarySearchTree.hpp"
 #include <iostream>
+#include "../Model/Nodes/BinaryTreeNode.hpp"
+#include "../Model/Structures/NonLinear/BinarySearchTree.hpp"
 
 class BinaryTreeTester
 {
 private:
+    BinaryTreeNode<int> testNode;
     BinarySearchTree<int> testTree;
+    
 public:
     void doTreeStuff();
 };

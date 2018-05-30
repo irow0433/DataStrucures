@@ -9,6 +9,7 @@
 #ifndef Stack_hpp
 #define Stack_hpp
 
+#include <stdio.h>
 #include "LinkedList.hpp"
 
 template <class Type>
@@ -24,7 +25,7 @@ public:
     Type peek();
     
     //Overridden LinkedList methods
-    void add(Type data)
+    void add(Type data);
     void addAtIndex(int index, Type data);
     Type getFromIndex(int index);
     Type remove(int index);
@@ -35,7 +36,6 @@ Stack<Type> :: Stack() : LinkedList<Type>()
 {
     //empty
 }
-
 template <class Type>
 Stack<Type> :: ~Stack()
 {
@@ -45,7 +45,7 @@ Stack<Type> :: ~Stack()
     }
 }
 
-template<class Type>
+template <class Type>
 void Stack<Type> :: push(Type data)
 {
     LinearNode<Type> * add = new LinearNode<Type>(data);
@@ -64,6 +64,12 @@ void Stack<Type> :: push(Type data)
 }
 
 template <class Type>
+void Stack<Type> :: add(Type data)
+{
+    push(data);
+}
+
+template <class Type>
 void Stack<Type> :: addAtIndex(int index, Type data)
 {
     assert(index == 0);
@@ -73,11 +79,11 @@ void Stack<Type> :: addAtIndex(int index, Type data)
 template <class Type>
 Type Stack<Type> :: pop()
 {
-    assert (this->size > 0);
+    assert(this->size > 0);
     Type removed = this->front->getData();
     
-    LinearrNode<Type> * removedNode = this->getFront();
-    this->setFront(removedNode->getNextNode());
+    LinearNode<Type> * removedNode = this->getFront();
+    this->front = removedNode->getNextNode();
     delete removedNode;
     
     this->size--;
@@ -86,9 +92,16 @@ Type Stack<Type> :: pop()
 }
 
 template <class Type>
-Type Stack<Type> :: peek(0)
+Type Stack<Type> :: remove(int index)
 {
-    assert(this->size > 0)
+    assert(index == 0);
+    return pop();
+}
+
+template <class Type>
+Type Stack<Type> :: peek()
+{
+    assert(this->size > 0);
     return this->getFront()->getData();
 }
 

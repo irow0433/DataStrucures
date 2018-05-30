@@ -9,48 +9,46 @@
 #ifndef Queue_hpp
 #define Queue_hpp
 
-#include "LinkedList.hpp"
-
-##include <iostream>
+#include "../Linear/LinkedList.hpp"
+#include <iostream>
 using namespace std;
 
 template <class Type>
-class Queue: public LinkedList<Type>
+class Queue : public LinkedList<Type>
 {
 public:
     Queue();
     ~Queue();
     
-    //Queue mehtods
+    //Queue methods
     void enqueue(Type data);
     Type dequeue();
     Type peek();
-    void clear(0);
-               
-               //Overrridden Linked List methods
+    void clear();
+    
+    //Overridden LinkedList methods
     void add(Type data);
     void addAtIndex(int index, Type data);
     Type getFromIndex(int index);
-    Type remove(int index)
-}
+    Type remove(int index);
+};
 
 template <class Type>
 Queue<Type> :: Queue() : LinkedList<Type>()
 {
-    //emtpy since it is handdled by the parent class constructor
+    //Empty because handled by parent constructor
 }
 
 template <class Type>
 Queue<Type> :: ~Queue()
 {
-    for(linearNode<Type> * removed = this->front;removed !=nullport; removed = this->front)
+    for(LinearNode<Type> * removed = this->front; removed != nullptr; removed = this->front)
     {
-        this->front = removed->getNextNode();
+        this->front = removed->GetNextNode();
         delete removed;
     }
 }
-
-template <class Type>
+template<class Type>
 void Queue<Type> :: enqueue(Type item)
 {
     LinearNode<Type> * added = new LinearNode<Type>(item);
@@ -75,7 +73,7 @@ void Queue<Type> :: addAtIndex(int index, Type item)
     enqueue(item);
 }
 
-template <class Type>
+template<class Type>
 void Queue<Type> :: add(Type item)
 {
     enqueue(item);
@@ -93,9 +91,16 @@ Type Queue<Type> :: dequeue()
     
     delete removed;
     
-    this->size = this->size - 1;
+    this->size = this->size -1;
     
     return returned;
+}
+
+template <class Type>
+Type Queue<Type> :: remove(int index)
+{
+    assert(index == 0);
+    return dequeue();
 }
 
 template <class Type>
@@ -105,13 +110,14 @@ void Queue<Type> :: clear()
     {
         cout << dequeue() << endl;
     }
+    
 }
 
-templatee <class Type>
+template <class Type>
 Type Queue<Type> :: peek()
 {
     assert(this->size > 0);
-    return this->getFront()->getData();
+    return this->getFront->getData();
 }
 
 template <class Type>
@@ -120,4 +126,6 @@ Type Queue<Type> :: getFromIndex(int index)
     assert(index == 0);
     return peek();
 }
+
+
 #endif /* Queue_hpp */

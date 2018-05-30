@@ -8,28 +8,32 @@
 
 #include "FileController.hpp"
 
-vector<CrimeData> FileController :: readCrimeDataToVector(string filename)
+using namespace std;
+
+vector<CrimeData> FileController :: readCrimeDataToVector(string fileName)
 {
-    std :: vector<CrimeData> crimeVector;
+    vector<CrimeData> crimeVector;
     string currentCSVLine;
     int rowCount = 0;
     
-    ifstream dataFile(filename);
+    ifstream dataFile(fileName);
     
-    //If the file exits at the path
-    if (dataFile,is_open())
+    //If the file exists at that path
+    if (dataFile.is_open())
     {
-        //deep reading until you are at the end of thee file.
+        //eof means end of file
         while (!dataFile.eof())
         {
-            //Grab each line from the CSV separated by the carraiage return character
-            getLine(dataFile, currentCSVLine, '\r');
-            //Exxclude headerr row
+            getline(dataFile, currentCSVLine, '\n');
             if (rowCount != 0)
             {
-                //create a CrimeData instance from the line.
-                CrimeData row(currentCSVLine);
-                crimeVector.push)_back(row);
+                //Create a CrimeData instance from the line
+                if(currentCSVLine.length() != 0)
+                {
+                    CrimeData row(currentCSVLine);
+                    crimeVector.push_back(row);
+                }
+                
             }
             rowCount++;
         }
@@ -43,3 +47,32 @@ vector<CrimeData> FileController :: readCrimeDataToVector(string filename)
     return crimeVector;
 }
 
+LinkedList<CrimeData> FileController :: readDataToList(string filename)
+{
+    LinkedList<CrimeData> crimes;
+    
+    string currentCSVLine;
+    int rowCount = 0;
+    
+    ifstream dataFile(filename);
+    
+    if(dataFile.is_open())
+    {
+        while(!dataFile.eof())
+        {
+            getline(dataFile, currentCSVLine, '\n');
+            if(rowCount != 0 && currentCSVLine.length() != 0)
+            {
+                CrimeData row(currentCSVLine);
+                crimes.add(row);
+            }
+            rowCount++;
+        }
+        dataFile.close();
+    }
+    else
+    {
+        cerr << "NO FILE" << endl;
+    }
+    return crimes;
+}

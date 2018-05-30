@@ -10,14 +10,10 @@
 #define Controller_hpp
 
 #include "Tools/Timer.hpp"
-
-#include <iostream>
+#include "FileController.hpp"
+#include "SortingTester.hpp";
 #include <vector>
-#include <sstream>
-#include <string>
-#include <fstream>
-
-#include <stdio.h>
+#include <iostream>
 
 class Controller
 {

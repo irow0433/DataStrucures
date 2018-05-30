@@ -6,34 +6,25 @@
 //  Copyright © 2018 Rowlette, Isaac. All rights reserved.
 //
 
-#include "Timer.hpp"
+#ifndef Timer_hpp
+#define Timer_hpp
 
-using namespace std;
+#include <stdio.h>
+#include <time.h>
+#include <assert.h>
+#include <iostream>
 
-Timer :: Timer ()
+class Timer
 {
-    executionTime = 0;
-}
+private:
+    clock_t executionTime;
+public:
+    Timer();
+    void startTimer();
+    void stopTimer();
+    void resetTimer();
+    void displayInformation();
+    long getTimeInMicroseconds();
+};
 
-void Timer :: resetTimer()
-{
-    executionTime = 0;
-}
-
-void Timer :: startTimer()
-{
-    executionTime= clock();
-}
-
-void Timer :: stopTimer()
-{
-    assert(executionTime !=0);
-    executionTime = clock() - executionTime;
-}
-
-void Timer :: displayInformation()
-{
-    cout << "Thee execution time is: " << executionTime << endl;
-    cout<< "In human time it is " << double (executionTime)/CLOCKS_PER_SEC <<
-    " seconds" << endl;
-}
+#endif /* Timer_hpp */

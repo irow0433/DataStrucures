@@ -7,7 +7,7 @@
 //
 
 #include "SortingTester.hpp"
-void SortingTester :: quickSort(std::vector<CrimeData> data, int low, int high)
+void SortingTester :: quickSort(vector<CrimeData> data, int low, int high)
 {
     if (low < high)
     {
@@ -18,33 +18,40 @@ void SortingTester :: quickSort(std::vector<CrimeData> data, int low, int high)
     }
 }
 
-int SortingTester :: partition(std::vector<CrimeData> info, int low, int high){
+int SortingTester :: partition(vector<CrimeData> info, int low, int high)
+{
     CrimeData pivotValue = info [high];
     int smallest = low - 1;
     
-    for (int index = low; index < high - 1; index++){
-        if(info[index] < pivotValue){
+    for(int i = low; i < high - 1; i++)
+    {
+        if (info[i] < pivotValue)
+        {
             smallest++;
-            swap(info, smallest, index);
+            swap(info, smallest, i);
         }
     }
-    swap(info, smallest + 1, high)
+    swap(info, smallest + 1, high);
     return smallest + 1;
 }
 
-void SortingTester :: swap(vector<CrimeData> info, int small, int large){
+void SortingTester :: swap(vector<CrimeData> info, int small, int large)
+{
     CrimeData temp = info[small];
     info[small] = info[large];
     info[large] = temp;
+    swapCount++;
 }
 
-void SortingTester :: testSorts(){
+void SortingTester :: testSorts()
+{
     Timer sortTimer;
-    vector<CrimeData> data = FileController::readCrimeDataToVector();
+    swapCount = 0;
+    vector<CrimeData> data = FileController :: readCrimeDataToVector("/Users/tbev6617/Documents/Data Structures/DataStructures2420/DataStructures2420/Data/crime.csv");
     
     sortTimer.startTimer();
     quickSort(data, 0, data.size());
     sortTimer.stopTimer();
     sortTimer.displayInformation();
-    cout <<  "the number of swaps were: " << swapCount << endl;
+    cout << "The number of swaps were: " << swapCount << endl;
 }

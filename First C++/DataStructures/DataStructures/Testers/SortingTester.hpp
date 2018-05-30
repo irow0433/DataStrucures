@@ -13,11 +13,13 @@
 #include "../Controller/FileController.hpp"
 #include "../Controller/Tools/Timer.hpp"
 
-class SortingTester{
+class SortingTester
+{
 private:
-    void quickSorrt(vector<CrimeData> data, int low, int high);
+    int swapCount;
+    void quickSort(vector<CrimeData> data, int low, int high);
     int partition(vector<CrimeData> data, int low, int high);
-    void swap(vector<CrimeData> info, int small, int large);
+    void swap(vector<CrimeData> data, int small, int large);
 public:
     void testSorts();
 };

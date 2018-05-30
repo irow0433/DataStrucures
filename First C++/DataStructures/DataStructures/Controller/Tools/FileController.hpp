@@ -9,19 +9,28 @@
 #ifndef FileController_hpp
 #define FileController_hpp
 
-using namespace std;
-
-#include <vector>
+#include "../Data/CrimeData.hpp"
+#include "../Model/Structures/Linear/LinkedList.hpp"
+#include <stdio.h>
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <vector>
 #include <sstream>
-#include <stdio.h>
 
 class FileController
 {
 public:
     static vector<CrimeData> readCrimeDataToVector(string filename);
-}
+    static LinkedList<CrimeData> readDataToList(string filename);
+};
+
+
+
+
+
+
+
+
 
 #endif /* FileController_hpp */

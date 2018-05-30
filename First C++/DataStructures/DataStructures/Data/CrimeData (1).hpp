@@ -10,7 +10,7 @@
 #define CrimeData_hpp
 
 #include <string>
-#include <cmath>    
+#include <cmath>
 #include <sstream> //String as stream
 
 using namespace std;
